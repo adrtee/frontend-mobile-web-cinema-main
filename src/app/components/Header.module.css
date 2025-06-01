@@ -1,0 +1,24 @@
+.header {
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px 10vw;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  background-color: #ffe100;
+  color: black;
+  transition: background-color 0.4s ease;
+  gap: 30px;
+}
+
+.header h1 {
+  font-size: 21px !important;
+  font-weight: 700;
+}
+
+.header p {
+  font-size: 18px !important;
+  font-weight: 700;
+}
