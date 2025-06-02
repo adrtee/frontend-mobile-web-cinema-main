@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import BookingUI from "./Booking";
 import styles from "./page.module.css";
 import Header from "../../components/Header";
 import SearchNotFound from "../../components/SearchNotFound";
@@ -72,7 +73,7 @@ export default async function Detail({ params }: DetailPageParams) {
                 </p>
               </div>
               <div className={styles.details}>
-                <h2>Language:</h2>
+                <h2>Languages:</h2>
                 <p>
                   {movie.spoken_languages.length > 0
                     ? movie.spoken_languages
@@ -87,6 +88,8 @@ export default async function Detail({ params }: DetailPageParams) {
               </div>
             </div>
           </div>
+
+          <BookingUI />
         </div>
       ) : (
         <SearchNotFound />

@@ -1,0 +1,68 @@
+.bookingContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0px;
+}
+
+.dates {
+  display: flex;
+  align-items: center;
+  background-color: #928e48;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 14px;
+}
+
+.day {
+  flex: 1;
+  text-align: center;
+  padding: 0.25rem;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.activeDay {
+  flex: 1;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.slot {
+  background-color: #26c947;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.slot:hover {
+  background-color: #20a63c;
+}
+
+.slotYellow {
+  background-color: #c4c926;
+}
+
+.slotYellow:hover {
+  background-color: #9a9e21;
+}
+
+.slotGrey {
+  background-color: #9f9f9f;
+  cursor: not-allowed;
+}
+
+.slotGrey:hover {
+  background-color: #6f6f6f;
+}
