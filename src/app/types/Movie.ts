@@ -1,6 +1,6 @@
-export interface Movie {
+export interface Movies {
   id: number;
-  original_title: string;
+  title: string;
   popularity: number;
   poster_path: string | null;
 }

@@ -8,7 +8,7 @@ export async function GET(req: Request) {
   const sortBy = searchParams.get("sortBy");
   const page = searchParams.get("page");
 
-  const url = `${TMDB_BASE_URL}?api_key=${TMDB_API_KEY}&primary_release_date.lte=2024-12-31&sort_by=${sortBy}&page=${page}`;
+  const url = `${TMDB_BASE_URL}/discover/movie?api_key=${TMDB_API_KEY}&with_release_type=3|2&include_video=true&vote_count.gte=5&with_runtime.gte=50&primary_release_date.lte=2024-12-31&sort_by=${sortBy}&page=${page}`;
 
   try {
     const response = await fetch(url);

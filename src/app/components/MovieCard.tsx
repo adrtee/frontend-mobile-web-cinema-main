@@ -2,9 +2,9 @@ import Image from "next/image";
 import React from "react";
 
 import styles from "./MovieCard.module.css";
-import { Movie } from "../types/Movie";
+import { Movies } from "../types/Movie";
 
-const MovieCard: React.FC<{ movie: Movie }> = ({ movie }) => {
+const MovieCard: React.FC<{ movie: Movies }> = ({ movie }) => {
   const imageUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
     : "/image-not-found.png";
@@ -12,10 +12,10 @@ const MovieCard: React.FC<{ movie: Movie }> = ({ movie }) => {
   return (
     <div className={styles.card}>
       <div className={styles.posterContainer}>
-        <img src={imageUrl} alt={movie.original_title} />
+        <img src={imageUrl} alt={movie.title} />
       </div>
 
-      <h3>{movie.original_title}</h3>
+      <h3>{movie.title}</h3>
 
       <div className={styles.ratingContainer}>
         <Image src="/star.png" width={15} height={15} alt="rating" />

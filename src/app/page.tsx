@@ -1,21 +1,24 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState, useRef, useCallback } from "react";
 
 import Header from "./components/Header";
 import MovieCard from "./components/MovieCard";
+import SearchNotFound from "./components/SearchNotFound";
 import Hero from "./Home/Hero";
 import styles from "./page.module.css";
-import { Movie } from "./types/Movie";
+import { Movies } from "./types/Movie";
 
 export default function Home() {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [loading, setLoading] = useState<Boolean>(false);
+  const [movies, setMovies] = useState<Movies[]>([]);
+  const [loading, setLoading] = useState<Boolean>(true);
   const [page, setPage] = useState<number>(1);
   const [sortBy, setSortBy] = useState<string>("release_date.desc");
 
   const moviesSectionRef = useRef<HTMLDivElement>(null!);
   const observer = useRef<IntersectionObserver | null>(null);
+  const router = useRouter();
 
   const lastMovieElementRef = useCallback(
     (node: HTMLDivElement | null) => {
@@ -70,25 +73,29 @@ export default function Home() {
         <label htmlFor="sort">Sort by:</label>
         <select id="sort" onChange={handleSort} value={sortBy}>
           <option value="release_date.desc">Most Recent</option>
-          <option value="original_title.asc">A-Z</option>
-          <option value="original_title.desc">Z-A</option>
+          <option value="title.asc">A-Z</option>
+          <option value="title.desc">Z-A</option>
           <option value="popularity.desc">Most Popular</option>
         </select>
       </div>
 
-      <main className={styles.movieList}>
-        {movies.map((movie, index) => {
-          if (index === movies.length - 1) {
+      {movies.length === 0 && !loading ? (
+        <SearchNotFound />
+      ) : (
+        <main className={styles.movieList}>
+          {movies.map((movie, index) => {
             return (
-              <div ref={lastMovieElementRef} key={index}>
+              <div
+                key={index}
+                ref={index === movies.length - 1 ? lastMovieElementRef : null}
+                onClick={() => router.push(`/detail/${movie.id}`)}
+              >
                 <MovieCard movie={movie} />
               </div>
             );
-          } else {
-            return <MovieCard key={index} movie={movie} />;
-          }
-        })}
-      </main>
+          })}
+        </main>
+      )}
 
       {loading && <p className={styles.loading}>Loading...</p>}
     </div>
