@@ -25,6 +25,8 @@ interface Language {
 export default async function Detail({ params }: DetailPageParams) {
   const { id } = await params;
 
+  console.debug(`Fetching movie data of id ${id}`);
+
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/movie?id=${id}`
   );
@@ -36,6 +38,8 @@ export default async function Detail({ params }: DetailPageParams) {
     imageUrl = movie.poster_path
       ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
       : "/image-not-found.png";
+  } else {
+    console.log(`Unable to retrieve movie data of id ${id}. ${data.message}`);
   }
 
   return (

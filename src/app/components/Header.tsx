@@ -1,12 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 import styles from "./header.module.css";
 
 const Header = () => {
-  const router = useRouter();
   return (
     <header className={styles.header}>
       <Link href={"/"}>

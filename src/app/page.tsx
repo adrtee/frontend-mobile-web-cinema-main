@@ -38,6 +38,7 @@ export default function Home() {
 
   const fetchMovies = async (reset = false) => {
     setLoading(true);
+    console.debug(`Fetching movie list`);
     try {
       const res = await fetch(`/api/discover?sortBy=${sortBy}&page=${page}`);
       const data = await res.json();
@@ -50,6 +51,7 @@ export default function Home() {
   };
 
   const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    console.debug(`Sort by ${e.target.value}`);
     setSortBy(e.target.value);
     setPage(1);
   };
