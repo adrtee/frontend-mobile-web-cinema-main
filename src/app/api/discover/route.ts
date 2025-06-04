@@ -17,7 +17,9 @@ export async function GET(req: Request) {
     const response = await fetch(url);
     const data = await response.json();
 
-    console.log("[/api/discover] Successfully retrieved movie list");
+    console.log(
+      `[/api/discover] Successfully retrieved movie list sorted by ${sortBy} and page ${page}`
+    );
     return NextResponse.json(data, { status: 200 });
   } catch (error) {
     console.error(error);
